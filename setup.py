@@ -186,6 +186,7 @@ def get_extensions():
         library_dirs += library_paths(cuda=True)
 
         from setuptools import Extension
+        op_files = [os.path.relpath(path, os.path.dirname(__file__)) for path in op_files]
         ext_ops = Extension(
             name=ext_name,
             sources=op_files,
@@ -225,6 +226,7 @@ def get_extensions():
                 '-D__CUDA_NO_HALF_CONVERSIONS__',
                 '-D__CUDA_NO_HALF2_OPERATORS__',
             ]
+        op_files = [os.path.relpath(path, os.path.dirname(__file__)) for path in op_files]
         ext_ops = Extension(
             name=ext_name,
             sources=op_files,
@@ -347,6 +349,7 @@ def get_extensions():
         if 'nvcc' in extra_compile_args and platform.system() != 'Windows':
             extra_compile_args['nvcc'] += ['-std=c++14']
 
+        op_files = [os.path.relpath(path, os.path.dirname(__file__)) for path in op_files]
         ext_ops = extension(
             name=ext_name,
             sources=op_files,
@@ -400,6 +403,7 @@ def get_extensions():
             library_dirs += library_paths(cuda=False)
 
         from setuptools import Extension
+        op_files = [os.path.relpath(path, os.path.dirname(__file__)) for path in op_files]
         ext_ops = Extension(
             name=ext_name,
             sources=op_files,
