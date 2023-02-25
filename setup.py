@@ -424,7 +424,7 @@ setup(
     description='OpenMMLab Computer Vision Foundation',
     keywords='computer vision',
     packages=find_packages(),
-    include_package_data=True,
+    include_package_data=False,
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
